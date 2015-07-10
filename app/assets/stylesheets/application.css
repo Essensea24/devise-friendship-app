@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+	text-align: center;
+}
+
+.usershow {
+	margin-bottom: 15px;
+	color:white;
+	background-color: grey;
+}
