@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :friendships
   has_many :friends, :through => :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', :foreign_key => "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', :foreign_key => "friend_id", dependent: :destroy
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   has_many :conversations, :foreign_key => :sender_id
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
   #for image uploading via paperclip
-  has_attached_file :image, :styles => { small: "64x64", med: "100x100", large: "200x200" }, :default_url =>"robot.jpg"
+  has_attached_file :image, :styles => { small: "64x64", med: "100x100", large: "200x200" }, :default_url=>"robot.png"
       validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 

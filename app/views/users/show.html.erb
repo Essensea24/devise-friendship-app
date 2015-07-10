@@ -7,6 +7,7 @@ Hello <%= current_user.firstname%><br>
 <%= image_tag current_user.image%><br>
 
 <h2>Your Friends</h2>
+<h3>You have <%= current_user.friendships.count %></h3>
 <ul>
 	<% for friendship in current_user.friendships %>
 		<li>
@@ -31,9 +32,5 @@ Hello <%= current_user.firstname%><br>
 
 <p><%= link_to "Find Friends", users_path %></p>
 
-	
-
-
-<%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
 <%= link_to "edit my profile", edit_user_registration_path(current_user) %>
 
